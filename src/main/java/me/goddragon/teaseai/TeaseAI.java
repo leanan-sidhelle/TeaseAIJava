@@ -373,7 +373,9 @@ public class TeaseAI extends Application {
         session.setActivePersonality((Personality) controller.getPersonalityChoiceBox().getSelectionModel().getSelectedItem());
 
         //Reset the temporary variables
-        session.getActivePersonality().getVariableHandler().clearTemporaryVariables();
+        if(session.getActivePersonality()!=null) {
+        	session.getActivePersonality().getVariableHandler().clearTemporaryVariables();
+        }
         AppearanceSettings.loadSelectedTheme();
     }
 
