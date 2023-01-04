@@ -4,3 +4,9 @@ pluginManagement {
     }
 }
 rootProject.name = "TeaseAIJava"
+
+sourceControl {
+    gitRepository("https://github.com/leanan-sidhelle/EstimAPI.git") {
+        producesModule("xman2B:EstimAPI")
+    }
+}

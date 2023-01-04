@@ -46,10 +46,15 @@ dependencies {
     implementation "org.json:json:20220924"
     implementation "org.jsoup:jsoup:[1.8.1,1.15.1)" //SHIT STICK JSOUP DEVs removed org.jsoup.safety.Whitelist in a fuck patch release rather than a GODDAMN major version!!!
     
-    implementation files("Resources/estimAPI.jar")
+    implementation("xman2B:EstimAPI") { 
+        version { 
+            branch = "development" 
+        }
+    }
+    
+    implementation files("Resources/uber-EstimAPI-0.0.1-SNAPSHOT.jar") //TODO:WTF does this come from???
 
     implementation files("Resources/marytts-builder-5.2-jar-with-dependencies.jar")
     implementation files("Resources/marytts-lang-en-5.2.jar")
     implementation files("Resources/voice-dfki-prudence-hsmm-5.2.jar")
-    implementation files("Resources/uber-EstimAPI-0.0.1-SNAPSHOT.jar")
 }
