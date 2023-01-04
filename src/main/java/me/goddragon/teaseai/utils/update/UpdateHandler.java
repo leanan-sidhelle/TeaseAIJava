@@ -78,13 +78,14 @@ public class UpdateHandler {
         String[] urls = libraries.split(";");
 
         Set<String> loadedLibraries = new HashSet<>();
-
-        for(File file : FileUtils.getLibFolder().listFiles()) {
-            if(file.isFile()) {
-                loadedLibraries.add(file.getName());
-            }
+        File[] files = FileUtils.getLibFolder().listFiles();
+        if(files!=null) {
+	        for(File file : files) {
+	            if(file.isFile()) {
+	                loadedLibraries.add(file.getName());
+	            }
+	        }
         }
-
         Set<String> librariesListed = new HashSet<>();
         Set<String> libraryURLsToFetch = new HashSet<>();
 
