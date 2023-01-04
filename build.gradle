@@ -1,9 +1,14 @@
 plugins {
-    id "java-library"
+    id "java"
+    id "application"
     id "io.toolebox.git-versioner" version "1.6.7"
 }
 
 group = "me.goddragon.teaseai"
+
+application {
+    mainClass = "me.goddragon.teaseai.Main"
+}
 
 repositories {
     mavenCentral()
