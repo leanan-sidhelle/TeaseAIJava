@@ -92,8 +92,6 @@ public abstract class AbstractHTMLRipper extends AlbumRipper {
         Document doc = getFirstPage();
 
         if (hasQueueSupport() && pageContainsAlbums(this.url)) {
-            List<String> urls = getAlbumsToQueue(doc);
-
             // We set doc to null here so the while loop below this doesn't fire
             doc = null;
         }

@@ -15,7 +15,7 @@ import java.util.*;
 import java.util.logging.Level;
 
 public abstract class AbstractRipper
-        extends Observable
+        extends Observable //TODO:why is this deprecated and what replaces it ???
         implements RipperInterface, Runnable {
 
     protected static final TeaseLogger LOGGER = TeaseLogger.getLogger();
