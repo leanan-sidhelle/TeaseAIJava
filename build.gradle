@@ -6,6 +6,13 @@ plugins {
 
 group = "me.goddragon.teaseai"
 
+versioner {
+  startFrom {
+    major = 1
+    minor = 3
+  }
+}
+
 application {
     mainClass = "me.goddragon.teaseai.Main"
 }
@@ -27,17 +34,17 @@ dependencies {
     implementation "org.openjfx:javafx-media:19:win"
     implementation "org.openjfx:javafx-swing:19"
     implementation "org.openjfx:javafx-swing:19:win"
-    implementation "org.openjdk.nashorn:nashorn-core:15.4"
+    implementation "org.openjdk.nashorn:nashorn-core:15.4" //TODO:is there something better to replace this?
     
-    implementation "commons-collections:commons-collections:3.2.2" //TODO:can this be upgraded to 4.X???
-    implementation "commons-configuration:commons-configuration:1.7" //TODO:can this be updgraded to 2.X ??
-    implementation "commons-lang:commons-lang:2.6" //TODO:can this be upgraded to 3.X ?
-    implementation "commons-logging:commons-logging:1.1.1"
-    implementation "com.google.code.gson:gson:2.6.2" //TODO:can this be upgraded?
-    implementation "com.google.guava:guava:22.0" //TODO:can this be upgraded?
-    implementation "org.apache.httpcomponents:httpmime:4.3.3" //TODO:can this be upgraded?
-    implementation "org.json:json:20140107" //TODO:can this be upgraded?
-    implementation "org.jsoup:jsoup:1.8.1" //TODO:can this be upgraded?
+    implementation "commons-collections:commons-collections:[3.2.2,4.0)" //TODO:can this be upgraded to 4.X???
+    implementation "commons-configuration:commons-configuration:[1.7,2.0)" //TODO:can this be updgraded to 2.X ??
+    implementation "commons-lang:commons-lang:[2.6,3.0)" //TODO:can this be upgraded to 3.X ?
+    implementation "commons-logging:commons-logging:[1.1.1,2.0)"
+    implementation "com.google.code.gson:gson:[2.6.2,3.0)" //TODO:can this be upgraded?
+    implementation "com.google.guava:guava:[22.0,30.0)" //TODO:can this be upgraded?
+    implementation "org.apache.httpcomponents:httpmime:[4.3.3,5.0)" //TODO:can this be upgraded?
+    implementation "org.json:json:[20140107,20220000)" //TODO:can this be upgraded?
+    implementation "org.jsoup:jsoup:[1.8.1,1.15.1)" //SHIT STICK JSOUP DEVs removed org.jsoup.safety.Whitelist in a fuck patch release rather than a GODDAMN major version!!!
     
     implementation files("Resources/estimAPI.jar")
 
