@@ -32,7 +32,7 @@ public class JFXUpdater {
             }
         }
 
-        if (new ComparableVersion(UpdateHandler.getHandler().version.getValue()).compareTo(new ComparableVersion(TeaseAI.application.VERSION)) > 0) {
+        if (new ComparableVersion(UpdateHandler.getHandler().version.getValue()).compareTo(new ComparableVersion(TeaseAI.VERSION)) > 0) {
             boolean[] update = {false};
             TeaseLogger.getLogger().log(Level.INFO, "New TAJ version " + UpdateHandler.getHandler().version.getValue() + " available");
             TeaseAI.application.runOnUIThread(new Runnable() {
@@ -92,23 +92,23 @@ public class JFXUpdater {
                     newUpdateJarFile.getParentFile().mkdirs();
 
                     ReadableByteChannel rbc = Channels.newChannel(url.openStream());
-                    FileOutputStream fos = new FileOutputStream(newUpdateJarFile);
+                    try(FileOutputStream fos = new FileOutputStream(newUpdateJarFile)) {
 
-                    //Update the progress bar based on the file size
-                    new Thread() {
-                        @Override
-                        public void run() {
-                            while (fos.getChannel().isOpen()) {
-                                try {
-                                    updateProgress(fos.getChannel().size(), fileSize);
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                }
-                            }
-                        }
-                    }.start();
-
-                    fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
+	                    //Update the progress bar based on the file size
+	                    new Thread() {
+	                        @Override
+	                        public void run() {
+	                            while (fos.getChannel().isOpen()) {
+	                                try {
+	                                    updateProgress(fos.getChannel().size(), fileSize);
+	                                } catch (IOException e) {
+	                                    e.printStackTrace();
+	                                }
+	                            }
+	                        }
+	                    }.start();
+	                    fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
+                    }
                     updateProgress(fileSize, fileSize);
 
                     TeaseLogger.getLogger().log(Level.INFO, "Update successfully downloaded. Launching Updater...");
