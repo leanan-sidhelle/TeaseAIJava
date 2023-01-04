@@ -61,7 +61,7 @@ public class JarRsrcLoader {
         Thread.currentThread().setContextClassLoader(jceClassLoader);
 
         TeaseLogger.getLogger().log(Level.INFO, "Classes injected. Starting up TAJ...");
-        Class c = Class.forName(mi.rsrcMainClass, true, jceClassLoader);
+        Class<?> c = Class.forName(mi.rsrcMainClass, true, jceClassLoader);
         Method main = c.getMethod("main", args.getClass());
         main.invoke(null, (Object) args);
     }
@@ -70,7 +70,7 @@ public class JarRsrcLoader {
         if(Main.getJavaVersion() > 8) {
             try {
                 Method m = ClassLoader.class.getDeclaredMethod("getPlatformClassLoader");
-                return (ClassLoader) m.invoke(null, null);
+                return (ClassLoader) m.invoke(null,((Object[])null));
             } catch (NoSuchMethodException e) {
                 e.printStackTrace();
             } catch (IllegalAccessException e) {
@@ -81,7 +81,7 @@ public class JarRsrcLoader {
         } else {
             try {
                 Method m = ClassLoader.class.getDeclaredMethod("getSystemClassLoader");
-                return (ClassLoader) m.invoke(null, null);
+                return (ClassLoader) m.invoke(null,((Object[])null));
             } catch (NoSuchMethodException e) {
                 e.printStackTrace();
             } catch (IllegalAccessException e) {
@@ -95,7 +95,7 @@ public class JarRsrcLoader {
     }
 
     private static JarRsrcLoader.ManifestInfo getManifestInfo() throws IOException {
-        Enumeration resEnum = Thread.currentThread().getContextClassLoader().getResources("META-INF/MANIFEST.MF");
+        Enumeration<?> resEnum = Thread.currentThread().getContextClassLoader().getResources("META-INF/MANIFEST.MF");
 
         while (resEnum.hasMoreElements()) {
             try {
@@ -131,7 +131,7 @@ public class JarRsrcLoader {
         if (line == null) {
             return null;
         } else {
-            List result = new ArrayList();
+            List<String> result = new ArrayList<String>();
 
             int lastPos;
             for (int firstPos = 0; firstPos < line.length(); firstPos = lastPos + 1) {

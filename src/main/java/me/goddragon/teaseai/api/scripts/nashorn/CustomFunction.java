@@ -1,6 +1,6 @@
 package me.goddragon.teaseai.api.scripts.nashorn;
 
-import jdk.nashorn.api.scripting.AbstractJSObject;
+import org.openjdk.nashorn.api.scripting.AbstractJSObject;
 import me.goddragon.teaseai.TeaseAI;
 
 import java.util.ArrayList;

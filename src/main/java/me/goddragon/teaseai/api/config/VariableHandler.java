@@ -1,6 +1,6 @@
 package me.goddragon.teaseai.api.config;
 
-import jdk.nashorn.api.scripting.ScriptObjectMirror;
+import org.openjdk.nashorn.api.scripting.ScriptObjectMirror;
 import me.goddragon.teaseai.api.scripts.personality.Personality;
 import me.goddragon.teaseai.utils.ArrayUtils;
 import me.goddragon.teaseai.utils.TeaseLogger;
