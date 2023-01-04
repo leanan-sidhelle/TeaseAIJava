@@ -27,10 +27,9 @@ public abstract class AdvancedResizeOp implements BufferedImageOp {
         Normal(0.3f),
         VerySharp(0.45f),
         Oversharpened(0.60f);
-        private final float factor;
 
         UnsharpenMask(float factor) {
-            this.factor = factor;
+            
         }
     }
 
