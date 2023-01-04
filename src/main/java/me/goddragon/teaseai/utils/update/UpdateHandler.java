@@ -126,7 +126,7 @@ public class UpdateHandler {
                 }
             }
         }
-
+        
         if(!libraryURLsToFetch.isEmpty()) {
             int dialogButton = JOptionPane.YES_NO_OPTION;
             int dialogResult = JOptionPane.showConfirmDialog(null, "Missing libraries found. Would you like to download?", "Missing libraries", dialogButton);

@@ -3,7 +3,6 @@ package me.goddragon.teaseai;
 import me.goddragon.teaseai.utils.FileUtils;
 import me.goddragon.teaseai.utils.TeaseLogger;
 import me.goddragon.teaseai.utils.ZipUtils;
-import me.goddragon.teaseai.utils.update.UpdateHandler;
 
 import javax.swing.*;
 import java.io.*;
@@ -21,10 +20,16 @@ public class Main {
     public static String OPERATING_SYSTEM = System.getProperty("os.name").toLowerCase();
 
     public static void main(String[] args) {
+    	TeaseLogger.getLogger().log(Level.INFO, "Launching with command: '" + getCommandOfCurrentProcess() + "'");
+    	TeaseLogger.getLogger().log(Level.INFO, "Initialization done.");
+        TeaseAI.main(args);
+    }
+    
+    public static void old_main(String[] args) {
         TeaseLogger.getLogger().log(Level.INFO, "Launching with command: '" + getCommandOfCurrentProcess() + "'");
-
+        
         TeaseLogger.getLogger().log(Level.INFO, "Checking libraries for updates...");
-        UpdateHandler.getHandler().checkLibraries();
+        //TODO:Overhaul how the libraries are checked and updated... UpdateHandler.getHandler().checkLibraries();
         TeaseLogger.getLogger().log(Level.INFO, "Libraries checked and up-to-date.");
 
         List<String> input = ManagementFactory.getRuntimeMXBean().getInputArguments();
@@ -106,11 +111,6 @@ public class Main {
 
                             progressMonitor.setProgress((int) downloadedFileSize);
 
-                            /*if (currentProgress > oldProgress) {
-                                TeaseLogger.getLogger().log(Level.INFO, "Download Progress at " + currentProgress + "%");
-                                oldProgress = currentProgress;
-                            }*/
-
                             bout.write(data, 0, x);
                         }
 
@@ -179,14 +179,13 @@ public class Main {
             TeaseLogger.getLogger().log(Level.INFO, "Restarting with installation " + launchParameter);
 
             if (javaFXFolder == null) {
-                Process process = Runtime.getRuntime().exec(new String[]{launchParameter, "-jar", "TeaseAI.jar"});
+                Runtime.getRuntime().exec(new String[]{launchParameter, "-jar", "TeaseAI.jar"});
             } else {
                 String modulePath = "--module-path=" + getJavaFXLibFolder().getPath();
                 String modules = "--add-modules=javafx.controls,javafx.fxml,javafx.base,javafx.media,javafx.graphics,javafx.swing,javafx.web";
 
                 System.out.println("Starting with parameters: " + modulePath + " " + modules);
-
-                Process process = Runtime.getRuntime().exec(new String[]{launchParameter, modulePath, modules, "-jar", "TeaseAI.jar"});
+                Runtime.getRuntime().exec(new String[]{launchParameter, modulePath, modules, "-jar", "TeaseAI.jar"});
             }
 
 
