@@ -23,21 +23,21 @@ dependencies {
     implementation "org.openjfx:javafx-swing:19"
     implementation "org.openjfx:javafx-swing:19:win"
     implementation "org.openjdk.nashorn:nashorn-core:15.4"
-     
-    implementation files("Resources/commons-collections-3.2.1.jar")
-    implementation files("Resources/commons-configuration-1.7.jar")
-    implementation files("Resources/commons-lang-2.6.jar")
-    implementation files("Resources/commons-logging-1.1.1.jar")
+    
+    implementation "commons-collections:commons-collections:3.2.2" //TODO:can this be upgraded to 4.X???
+    implementation "commons-configuration:commons-configuration:1.7" //TODO:can this be updgraded to 2.X ??
+    implementation "commons-lang:commons-lang:2.6" //TODO:can this be upgraded to 3.X ?
+    implementation "commons-logging:commons-logging:1.1.1"
+    implementation "com.google.code.gson:gson:2.6.2" //TODO:can this be upgraded?
+    implementation "com.google.guava:guava:22.0" //TODO:can this be upgraded?
+    implementation "org.apache.httpcomponents:httpmime:4.3.3" //TODO:can this be upgraded?
+    implementation "org.json:json:20140107" //TODO:can this be upgraded?
+    implementation "org.jsoup:jsoup:1.8.1" //TODO:can this be upgraded?
+    
     implementation files("Resources/estimAPI.jar")
-    implementation files("Resources/gson-2.6.2.jar")
-    implementation files("Reources/guava-22.0.jar")
-    implementation files("Resources/httpclient-4.3.6.jar")
-    implementation files("Resources/httpcore-4.3.3.jar")
-    implementation files("Resources/httpmime-4.3.3.jar")
-    implementation files("Resources/json-20140107.jar")
-    implementation files("Resources/jsoup-1.8.1.jar")
+
     implementation files("Resources/marytts-builder-5.2-jar-with-dependencies.jar")
     implementation files("Resources/marytts-lang-en-5.2.jar")
-    implementation files("Resources/uber-EstimAPI-0.0.1-SNAPSHOT.jar")
     implementation files("Resources/voice-dfki-prudence-hsmm-5.2.jar")
+    implementation files("Resources/uber-EstimAPI-0.0.1-SNAPSHOT.jar")
 }
