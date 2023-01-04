@@ -181,7 +181,7 @@ public class Session {
         }
 
         this.activePersonality = activePersonality;
-        activePersonality.load();
+        if(activePersonality!=null) activePersonality.load();
     }
 
     public Personality getActivePersonality() {
