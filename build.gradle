@@ -9,7 +9,7 @@ group = "me.goddragon.teaseai"
 versioner {
   startFrom {
     major = 1
-    minor = 3
+    minor = 4
   }
 }
 
